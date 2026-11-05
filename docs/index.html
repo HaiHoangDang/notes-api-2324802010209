@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -30,10 +29,6 @@
             font-size: 27px;
         }
 
-        header p {
-            margin: 6px;
-        }
-
         main {
             max-width: 1100px;
             margin: 30px auto;
@@ -52,12 +47,11 @@
             color: #17365d;
             border-bottom: 2px solid #dbeafe;
             padding-bottom: 10px;
-            margin-top: 0;
         }
 
         h3 {
             color: #24558a;
-            margin-top: 22px;
+            margin-top: 24px;
         }
 
         table {
@@ -87,20 +81,13 @@
             padding: 16px;
             border-left: 4px solid #2563eb;
             border-radius: 5px;
-            margin: 15px 0;
+            margin-top: 18px;
         }
 
-        .success {
+        .result {
             background: #ecfdf5;
+            padding: 16px;
             border-left: 4px solid #059669;
-            padding: 15px;
-            border-radius: 5px;
-        }
-
-        .warning {
-            background: #fff7ed;
-            border-left: 4px solid #ea580c;
-            padding: 15px;
             border-radius: 5px;
         }
 
@@ -110,8 +97,6 @@
             padding: 18px;
             border-radius: 8px;
             overflow-x: auto;
-            white-space: pre-wrap;
-            word-break: break-word;
         }
 
         code {
@@ -155,6 +140,7 @@
 
 <main>
 
+    <!-- PHẦN 1 -->
     <section>
         <h2>1. Mục tiêu thực hành</h2>
 
@@ -174,129 +160,115 @@
     </section>
 
 
+    <!-- PHẦN 2 -->
     <section>
         <h2>2. Thông tin thiết bị thực hành</h2>
 
-        <h3>2.1. Máy tính cá nhân</h3>
+        <h3>2.1. Máy tính cá nhân - Dell Latitude 7300</h3>
 
         <table>
-            <tbody>
-                <tr>
-                    <th>Thông số</th>
-                    <th>Kết quả</th>
-                </tr>
-
-                <tr>
-                    <td>Nhà sản xuất</td>
-                    <td>Dell Inc.</td>
-                </tr>
-
-                <tr>
-                    <td>Model</td>
-                    <td>Latitude 7300</td>
-                </tr>
-
-                <tr>
-                    <td>Bộ xử lý</td>
-                    <td>Intel Core i7-8665U CPU @ 1.90GHz</td>
-                </tr>
-
-                <tr>
-                    <td>Số nhân CPU</td>
-                    <td>4 nhân</td>
-                </tr>
-
-                <tr>
-                    <td>Số CPU logic</td>
-                    <td>8 CPU logic</td>
-                </tr>
-
-                <tr>
-                    <td>RAM</td>
-                    <td>8.006 MB, tương đương khoảng 7.82 GB</td>
-                </tr>
-
-                <tr>
-                    <td>Hệ điều hành</td>
-                    <td>Microsoft Windows 10 Pro</td>
-                </tr>
-
-                <tr>
-                    <td>Phiên bản hệ điều hành</td>
-                    <td>10.0.19045 - Build 19045</td>
-                </tr>
-
-                <tr>
-                    <td>Kiến trúc</td>
-                    <td>x64 - 64-bit</td>
-                </tr>
-
-                <tr>
-                    <td>Node.js tại lần kiểm tra ban đầu</td>
-                    <td>Windows PowerShell chưa nhận diện được lệnh node.</td>
-                </tr>
-            </tbody>
+            <tr>
+                <th>Thông số</th>
+                <th>Giá trị</th>
+            </tr>
+            <tr>
+                <td>Nhà sản xuất</td>
+                <td>Dell Inc.</td>
+            </tr>
+            <tr>
+                <td>Model</td>
+                <td>Latitude 7300</td>
+            </tr>
+            <tr>
+                <td>CPU</td>
+                <td>Intel Core i7-8665U @ 1.90GHz</td>
+            </tr>
+            <tr>
+                <td>Số nhân CPU</td>
+                <td>4 nhân</td>
+            </tr>
+            <tr>
+                <td>Số CPU logic</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>RAM</td>
+                <td>8.006 MB (khoảng 7.82 GB)</td>
+            </tr>
+            <tr>
+                <td>Hệ điều hành</td>
+                <td>Windows 10 Pro</td>
+            </tr>
+            <tr>
+                <td>Phiên bản hệ điều hành</td>
+                <td>Build 19045</td>
+            </tr>
+            <tr>
+                <td>Kiến trúc</td>
+                <td>x64 - 64-bit</td>
+            </tr>
+            <tr>
+                <td>Hostname</td>
+                <td>DESKTOP-H8SV3E1</td>
+            </tr>
+            <tr>
+                <td>Node.js</td>
+                <td>v26.13.0</td>
+            </tr>
+            <tr>
+                <td>npm</td>
+                <td>11.20.0</td>
+            </tr>
         </table>
-
 
         <h3>2.2. Môi trường GitHub Codespaces</h3>
 
         <table>
-            <tbody>
-                <tr>
-                    <th>Thông số</th>
-                    <th>Kết quả thực tế</th>
-                </tr>
-
-                <tr>
-                    <td>Node.js</td>
-                    <td>v22.23.4</td>
-                </tr>
-
-                <tr>
-                    <td>npm</td>
-                    <td>10.9.9</td>
-                </tr>
-
-                <tr>
-                    <td>Hệ điều hành</td>
-                    <td>Debian GNU/Linux 13 (trixie)</td>
-                </tr>
-
-                <tr>
-                    <td>Kernel</td>
-                    <td>Linux 6.8.0-1064-azure</td>
-                </tr>
-
-                <tr>
-                    <td>Kiến trúc</td>
-                    <td>x86_64</td>
-                </tr>
-
-                <tr>
-                    <td>CPU</td>
-                    <td>2 CPU logic</td>
-                </tr>
-
-                <tr>
-                    <td>RAM tổng</td>
-                    <td>7.8 GiB</td>
-                </tr>
-
-                <tr>
-                    <td>Hostname</td>
-                    <td>codespaces-44d1d3</td>
-                </tr>
-
-                <tr>
-                    <td>Trạng thái API</td>
-                    <td>Khởi chạy thành công tại cổng 3000</td>
-                </tr>
-            </tbody>
+            <tr>
+                <th>Thông số</th>
+                <th>Giá trị</th>
+            </tr>
+            <tr>
+                <td>Node.js</td>
+                <td>v22.23.4</td>
+            </tr>
+            <tr>
+                <td>npm</td>
+                <td>10.9.9</td>
+            </tr>
+            <tr>
+                <td>Hệ điều hành</td>
+                <td>Debian GNU/Linux 13 (trixie)</td>
+            </tr>
+            <tr>
+                <td>Linux Kernel</td>
+                <td>6.8.0-1064-azure</td>
+            </tr>
+            <tr>
+                <td>Kiến trúc</td>
+                <td>x86_64</td>
+            </tr>
+            <tr>
+                <td>Số CPU logic</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>Số nhân CPU vật lý</td>
+                <td>Chưa xác định</td>
+            </tr>
+            <tr>
+                <td>RAM tổng cộng</td>
+                <td>7.8 GiB</td>
+            </tr>
+            <tr>
+                <td>Hostname</td>
+                <td>codespaces-44d1d3</td>
+            </tr>
         </table>
     </section>
 
 
+    <!-- PHẦN 3 -->
     <section>
         <h2>3. Bảng so sánh máy cá nhân và Codespace</h2>
 
@@ -305,96 +277,103 @@
                 <tr>
                     <th>Tiêu chí</th>
                     <th>Máy cá nhân - Dell Latitude 7300</th>
-                    <th>Codespace</th>
+                    <th>GitHub Codespaces</th>
                 </tr>
             </thead>
 
             <tbody>
                 <tr>
                     <td>Thời gian từ lúc bắt đầu đến khi chạy được node -v</td>
-
                     <td>
-                        Không chạy được tại lần kiểm tra ban đầu.
-                        Windows PowerShell báo không nhận diện lệnh node.
+                        Chưa đo được; lần kiểm tra ban đầu
+                        Windows chưa nhận diện Node.js.
                     </td>
-
                     <td>
-                        Chưa ghi nhận thời gian bằng đồng hồ khi tạo Codespace.
-                        Lệnh node -v hiện chạy thành công.
+                        Chưa đo thời gian cấp phát;
+                        đã chạy thành công node -v.
                     </td>
                 </tr>
 
                 <tr>
                     <td>Phiên bản Node.js</td>
-
-                    <td>
-                        Chưa được nhận diện tại lần kiểm tra trên Windows.
-                    </td>
-
+                    <td>v26.13.0</td>
                     <td>v22.23.4</td>
                 </tr>
 
                 <tr>
                     <td>Phiên bản npm</td>
-
-                    <td>Chưa kiểm tra thành công.</td>
-
+                    <td>11.20.0</td>
                     <td>10.9.9</td>
                 </tr>
 
                 <tr>
-                    <td>Số CPU, RAM</td>
+                    <td>CPU</td>
+                    <td>Intel Core i7-8665U</td>
+                    <td>CPU được cấp phát trên Codespaces</td>
+                </tr>
 
-                    <td>
-                        Intel Core i7-8665U, 4 nhân,
-                        8 CPU logic, RAM khoảng 7.82 GB.
-                    </td>
+                <tr>
+                    <td>Số nhân CPU</td>
+                    <td>4 nhân</td>
+                    <td>Chưa xác định số nhân vật lý</td>
+                </tr>
 
-                    <td>
-                        2 CPU logic, RAM 7.8 GiB.
-                    </td>
+                <tr>
+                    <td>Số CPU logic</td>
+                    <td>8</td>
+                    <td>2</td>
+                </tr>
+
+                <tr>
+                    <td>RAM tổng cộng</td>
+                    <td>8.006 MB (khoảng 7.82 GB)</td>
+                    <td>7.8 GiB</td>
                 </tr>
 
                 <tr>
                     <td>Hệ điều hành</td>
+                    <td>Windows 10 Pro</td>
+                    <td>Debian GNU/Linux 13 (trixie)</td>
+                </tr>
 
-                    <td>
-                        Windows 10 Pro, Build 19045, 64-bit.
-                    </td>
+                <tr>
+                    <td>Phiên bản hệ điều hành</td>
+                    <td>Build 19045</td>
+                    <td>Linux Kernel 6.8.0-1064-azure</td>
+                </tr>
 
-                    <td>
-                        Debian GNU/Linux 13 (trixie),
-                        Kernel Linux 6.8.0-1064-azure.
-                    </td>
+                <tr>
+                    <td>Kiến trúc</td>
+                    <td>x64 - 64-bit</td>
+                    <td>x86_64</td>
+                </tr>
+
+                <tr>
+                    <td>Hostname</td>
+                    <td>DESKTOP-H8SV3E1</td>
+                    <td>codespaces-44d1d3</td>
                 </tr>
 
                 <tr>
                     <td>Cách truy cập từ thiết bị khác</td>
-
                     <td>
-                        Thông thường truy cập bằng localhost.
-                        Muốn thiết bị khác truy cập cần cấu hình
-                        địa chỉ mạng, tường lửa và chia sẻ dịch vụ.
+                        Thông thường sử dụng localhost;
+                        cần cấu hình mạng và chia sẻ dịch vụ.
                     </td>
-
                     <td>
-                        Sử dụng URL chuyển tiếp của GitHub Codespaces.
-                        Cổng 3000 có thể đặt Public để thiết bị khác
-                        truy cập qua Internet.
+                        Sử dụng URL GitHub Codespaces,
+                        cổng 3000 đặt Public.
                     </td>
                 </tr>
 
                 <tr>
                     <td>Chi phí, đo bằng gì</td>
-
                     <td>
-                        Chi phí mua phần cứng, điện năng tiêu thụ
-                        và bảo trì máy tính.
+                        Chi phí mua phần cứng, điện năng
+                        và bảo trì.
                     </td>
-
                     <td>
-                        Theo dõi tài nguyên compute bằng core-hours
-                        và lưu trữ bằng GB-hours tại GitHub Billing Usage.
+                        Core-hours và dung lượng lưu trữ GB-hours.
                     </td>
                 </tr>
             </tbody>
@@ -402,16 +381,17 @@
 
         <div class="note">
             <strong>Nhận xét:</strong>
-
-            Máy cá nhân có 8 CPU logic và khoảng 7.82 GB RAM,
-            trong khi Codespace được cấu hình 2 CPU logic và 7.8 GiB RAM.
-            Codespaces cung cấp môi trường lập trình trực tuyến với
-            Node.js và npm đã sẵn sàng sử dụng, giúp giảm công việc
-            chuẩn bị môi trường trên máy cá nhân.
+            Máy tính Dell Latitude 7300 có 8 CPU logic và khoảng
+            7.82 GB RAM. Trong khi đó, môi trường Codespaces được
+            cấp 2 CPU logic và 7.8 GiB RAM. Codespaces cung cấp
+            môi trường lập trình trực tuyến với Node.js và npm,
+            giúp người dùng triển khai ứng dụng mà không phải
+            tự chuẩn bị toàn bộ môi trường trên máy cá nhân.
         </div>
     </section>
 
 
+    <!-- PHẦN 4 -->
     <section>
         <h2>4. Năm đặc tính điện toán đám mây theo NIST</h2>
 
@@ -431,13 +411,12 @@
                             (On-demand Self-service)
                         </strong>
                     </td>
-
                     <td>
                         Tạo repository từ template của giảng viên,
-                        sau đó chọn Code, Codespaces và Create codespace
-                        on main để cấp phát môi trường lập trình.
-                        Người dùng có thể tự tạo môi trường mà không
-                        cần nhân viên nhà cung cấp thực hiện cài đặt
+                        sau đó chọn Code, Codespaces và Create
+                        codespace on main để cấp phát môi trường
+                        lập trình. Người dùng có thể tự tạo môi trường
+                        mà không cần nhân viên nhà cung cấp cài đặt
                         thủ công.
                     </td>
                 </tr>
@@ -449,15 +428,13 @@
                             (Broad Network Access)
                         </strong>
                     </td>
-
                     <td>
-                        API chạy trên GitHub Codespaces có thể được
-                        truy cập thông qua URL chuyển tiếp của GitHub.
+                        API chạy trên GitHub Codespaces có thể
+                        được truy cập bằng URL chuyển tiếp của GitHub.
                         Khi cổng 3000 được đặt ở chế độ Public,
-                        thiết bị khác có thể truy cập dịch vụ bằng
-                        trình duyệt thông qua Internet.
-                        Sau khi kiểm tra cần chuyển cổng về Private
-                        để hạn chế truy cập không cần thiết.
+                        thiết bị khác có thể truy cập dịch vụ qua
+                        Internet. Sau khi kiểm tra, cổng cần được
+                        chuyển lại Private để hạn chế truy cập.
                     </td>
                 </tr>
 
@@ -468,16 +445,13 @@
                             (Resource Pooling)
                         </strong>
                     </td>
-
                     <td>
                         GitHub quản lý hạ tầng máy chủ và tập trung
                         tài nguyên tính toán để cung cấp cho nhiều
                         người dùng. Codespace của bài thực hành được
-                        cấp 2 CPU logic và khoảng 7.8 GiB RAM.
-                        Người dùng không cần trực tiếp quản lý
-                        máy chủ vật lý đang cung cấp tài nguyên.
-                        Trường host cho biết hostname của môi trường
-                        đang chạy API.
+                        cấp 2 CPU logic và 7.8 GiB RAM. Người dùng
+                        không cần trực tiếp quản lý máy chủ vật lý
+                        đang cung cấp tài nguyên.
                     </td>
                 </tr>
 
@@ -488,14 +462,13 @@
                             (Rapid Elasticity)
                         </strong>
                     </td>
-
                     <td>
-                        Codespaces cho phép người dùng nhanh chóng
-                        tạo, khởi chạy và dừng môi trường khi nhu cầu
-                        sử dụng thay đổi. Việc Stop và Start minh họa
-                        khả năng cấp phát và giải phóng môi trường.
-                        Tuy nhiên, bài thực hành chưa kiểm thử việc
-                        tự động tăng hoặc giảm CPU, RAM theo tải thực tế.
+                        Codespaces cho phép tạo, khởi chạy và dừng
+                        môi trường khi nhu cầu sử dụng thay đổi.
+                        Việc cấp phát và dừng Codespace minh họa
+                        khả năng cung cấp và giải phóng tài nguyên
+                        nhanh chóng. Bài thực hành chưa kiểm thử
+                        tự động tăng hoặc giảm CPU, RAM theo tải.
                     </td>
                 </tr>
 
@@ -506,15 +479,13 @@
                             (Measured Service)
                         </strong>
                     </td>
-
                     <td>
-                        GitHub theo dõi mức sử dụng tài nguyên
-                        Codespaces thông qua Billing & Licensing
-                        và mục Usage. Thời gian sử dụng compute
-                        được tính bằng core-hours, dung lượng lưu trữ
-                        được theo dõi riêng bằng GB-hours.
-                        Nhờ đó người dùng có thể kiểm tra mức sử dụng
-                        tài nguyên và quản lý chi phí.
+                        GitHub theo dõi mức sử dụng Codespaces
+                        thông qua Billing & Licensing và mục Usage.
+                        Tài nguyên compute được đo bằng core-hours,
+                        dung lượng lưu trữ được theo dõi bằng
+                        GB-hours. Nhờ đó người dùng có thể theo dõi
+                        mức sử dụng tài nguyên và quản lý chi phí.
                     </td>
                 </tr>
             </tbody>
@@ -522,6 +493,7 @@
     </section>
 
 
+    <!-- PHẦN 5 -->
     <section>
         <h2>5. Kết quả triển khai API Hello Cloud</h2>
 
@@ -533,23 +505,22 @@
         </p>
 
         <p>
-            API sử dụng phương thức GET tại đường dẫn /
-            và trả về dữ liệu JSON gồm thông điệp chào mừng,
-            hostname, hệ điều hành, số CPU, RAM, thời gian hoạt động
+            API sử dụng phương thức GET tại đường dẫn / và trả
+            về dữ liệu JSON gồm thông điệp chào mừng, hostname,
+            hệ điều hành, số CPU, RAM, thời gian hoạt động
             và thời điểm phản hồi.
         </p>
 
-        <div class="success">
-            <strong>Kết quả kiểm tra:</strong>
-
-            <p>API: GET /</p>
-            <p>Cổng: 3000</p>
+        <div class="result">
+            <strong>Kết quả kiểm tra API:</strong>
+            <p>Địa chỉ: GET /</p>
+            <p>Cổng chạy: 3000</p>
             <p>Node.js: v22.23.4</p>
             <p>npm: 10.9.9</p>
             <p>Trạng thái: Khởi chạy thành công.</p>
         </div>
 
-        <h3>5.1. Dữ liệu JSON thực tế từ API</h3>
+        <h3>5.1. Kết quả JSON thực tế</h3>
 
         <pre><code>{
   "message": "Xin chào từ đám mây!",
@@ -564,61 +535,51 @@
         <h3>5.2. Ý nghĩa các trường dữ liệu</h3>
 
         <table>
-            <thead>
-                <tr>
-                    <th>Trường</th>
-                    <th>Giá trị thực tế</th>
-                    <th>Ý nghĩa</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                    <td>message</td>
-                    <td>Xin chào từ đám mây!</td>
-                    <td>Thông điệp trả về từ API.</td>
-                </tr>
-
-                <tr>
-                    <td>host</td>
-                    <td>codespaces-44d1d3</td>
-                    <td>Tên máy chủ của môi trường Codespace.</td>
-                </tr>
-
-                <tr>
-                    <td>platform</td>
-                    <td>Linux 6.8.0-1064-azure</td>
-                    <td>Thông tin hệ điều hành và kernel.</td>
-                </tr>
-
-                <tr>
-                    <td>cpus</td>
-                    <td>2</td>
-                    <td>Số CPU logic được Node.js nhận diện.</td>
-                </tr>
-
-                <tr>
-                    <td>memoryGB</td>
-                    <td>7.8</td>
-                    <td>Tổng RAM được hệ điều hành báo cáo, quy đổi sang GB.</td>
-                </tr>
-
-                <tr>
-                    <td>uptimeSec</td>
-                    <td>6587 giây</td>
-                    <td>Thời gian hoạt động của hệ điều hành tại thời điểm kiểm tra.</td>
-                </tr>
-
-                <tr>
-                    <td>time</td>
-                    <td>2026-11-05T08:06:30.780Z</td>
-                    <td>Thời điểm API tạo phản hồi theo định dạng UTC.</td>
-                </tr>
-            </tbody>
+            <tr>
+                <th>Trường</th>
+                <th>Giá trị</th>
+                <th>Ý nghĩa</th>
+            </tr>
+            <tr>
+                <td>message</td>
+                <td>Xin chào từ đám mây!</td>
+                <td>Thông điệp API trả về.</td>
+            </tr>
+            <tr>
+                <td>host</td>
+                <td>codespaces-44d1d3</td>
+                <td>Tên máy chủ đang chạy ứng dụng.</td>
+            </tr>
+            <tr>
+                <td>platform</td>
+                <td>Linux 6.8.0-1064-azure</td>
+                <td>Thông tin hệ điều hành và kernel.</td>
+            </tr>
+            <tr>
+                <td>cpus</td>
+                <td>2</td>
+                <td>Số CPU logic được Node.js nhận diện.</td>
+            </tr>
+            <tr>
+                <td>memoryGB</td>
+                <td>7.8</td>
+                <td>Tổng RAM do hệ điều hành báo cáo.</td>
+            </tr>
+            <tr>
+                <td>uptimeSec</td>
+                <td>6587 giây</td>
+                <td>Thời gian hoạt động của hệ điều hành.</td>
+            </tr>
+            <tr>
+                <td>time</td>
+                <td>2026-11-05T08:06:30.780Z</td>
+                <td>Thời điểm tạo phản hồi theo UTC.</td>
+            </tr>
         </table>
     </section>
 
 
+    <!-- PHẦN 6 -->
     <section>
         <h2>6. Trả lời câu hỏi phản biện</h2>
 
@@ -631,20 +592,17 @@
         <p>
             Trường host được lấy từ hàm os.hostname() của Node.js,
             dùng để xác định tên máy chủ đang chạy ứng dụng.
-        </p>
-
-        <p>
             Trong lần kiểm tra đầu tiên ngày 05/11/2026,
             API trả về hostname là codespaces-44d1d3.
-            Sau khi Stop rồi Start lại Codespace, cần kiểm tra
-            hostname lần thứ hai để xác định giá trị có thay đổi hay không.
         </p>
 
         <p>
-            Nếu hostname giữ nguyên, có thể môi trường Codespace
-            đã được khôi phục với tên máy chủ cũ.
-            Nếu hostname thay đổi, có thể môi trường đang chạy
-            trên một máy chủ khác.
+            Sau khi Stop và Start lại Codespace, hostname có thể
+            giữ nguyên hoặc thay đổi tùy theo cách môi trường
+            được khôi phục và bố trí trên hạ tầng của nhà cung cấp.
+            Nếu hostname giữ nguyên, môi trường có thể đã được
+            khôi phục với tên máy chủ cũ. Nếu hostname thay đổi,
+            môi trường có thể được chạy trên một máy chủ khác.
         </p>
 
         <p>
@@ -656,12 +614,10 @@
         </p>
 
         <p>
-            Tuy nhiên, chỉ dựa vào việc hostname thay đổi hoặc
-            không thay đổi chưa đủ để kết luận về Resource Pooling,
-            vì hostname có thể được giữ nguyên sau khi môi trường
-            được khởi động lại.
+            Tuy nhiên, chỉ dựa vào hostname thay đổi hay không
+            chưa đủ để kết luận về Resource Pooling, vì hostname
+            có thể được giữ nguyên khi môi trường khởi động lại.
         </p>
-
 
         <h3>
             Câu 2. Codespaces là IaaS, PaaS hay SaaS?
@@ -676,29 +632,25 @@
         </p>
 
         <p>
-            GitHub quản lý hạ tầng máy chủ vật lý, tài nguyên
-            tính toán và cung cấp môi trường Codespaces.
-            Hệ điều hành Linux của môi trường phát triển được
-            cung cấp thông qua cấu hình Dev Container.
-            Người dùng có thể tùy chỉnh môi trường và cài đặt
-            các phần mềm cần thiết.
+            GitHub quản lý hạ tầng máy chủ vật lý và tài nguyên
+            tính toán, đồng thời cung cấp môi trường Codespaces.
+            Hệ điều hành và môi trường phát triển được cung cấp
+            thông qua cấu hình môi trường của Codespaces.
         </p>
 
         <p>
-            Trong bài này, môi trường đã có Node.js v22.23.4
-            và npm 10.9.9. Người dùng sử dụng runtime này,
-            cài đặt Express và viết mã nguồn ứng dụng.
-            Người dùng chịu trách nhiệm phát triển, kiểm thử,
-            chỉnh sửa và quản lý mã nguồn của mình.
+            Người dùng cài đặt hoặc sử dụng runtime Node.js,
+            npm và thư viện Express để xây dựng ứng dụng.
+            Người dùng tự viết, chỉnh sửa, kiểm thử và quản lý
+            mã nguồn của mình.
         </p>
 
         <p>
             Vì vậy, Codespaces gần với PaaS hơn IaaS và SaaS:
             nhà cung cấp quản lý hạ tầng và cung cấp nền tảng
             phát triển, còn người dùng tập trung xây dựng ứng dụng
-            mà không phải trực tiếp quản lý máy chủ vật lý.
+            mà không cần tự quản lý máy chủ vật lý.
         </p>
-
 
         <h3>
             Câu 3. Nêu hai hạn chế của cách làm truyền thống
@@ -720,39 +672,38 @@
 
         <p>
             Phương pháp truyền thống yêu cầu sinh viên cài đặt
-            và cấu hình các công cụ lập trình trên từng máy tính.
+            và cấu hình công cụ lập trình trên từng máy tính.
             Việc thực hành cũng phụ thuộc vào máy tính và phòng lab.
-            Codespaces cho phép tạo môi trường lập trình trực tuyến
-            và truy cập thông qua trình duyệt có kết nối Internet.
+            Codespaces cho phép tạo môi trường trực tuyến và truy cập
+            thông qua trình duyệt có kết nối Internet.
         </p>
 
         <p><strong>Một rủi ro mới - Rủi ro bảo mật và lộ dữ liệu:</strong></p>
 
         <p>
-            Khi sử dụng điện toán đám mây, nếu người dùng vô tình
-            chuyển cổng dịch vụ sang chế độ Public, người khác có
-            thể truy cập ứng dụng thông qua URL công khai.
-            Ngoài ra, người dùng còn phụ thuộc vào kết nối Internet
-            và sự ổn định của nhà cung cấp.
+            Nếu người dùng vô tình chuyển cổng dịch vụ sang chế độ
+            Public, người khác có thể truy cập ứng dụng thông qua
+            URL công khai. Ngoài ra, người dùng còn phụ thuộc vào
+            kết nối Internet và sự ổn định của nhà cung cấp.
         </p>
 
         <p>
             Trong bài thực hành, cổng 3000 được sử dụng để minh họa
-            việc chia sẻ API qua mạng. Vì vậy, sau khi kiểm tra,
-            cần chuyển cổng về Private để hạn chế truy cập
-            không mong muốn.
+            việc chia sẻ API qua mạng. Sau khi kiểm tra cần chuyển
+            cổng về Private để hạn chế truy cập không mong muốn.
         </p>
     </section>
 
 
+    <!-- PHẦN 7 -->
     <section>
         <h2>7. Kết luận</h2>
 
         <p>
             Qua bài thực hành, em đã tìm hiểu cách tạo môi trường
-            lập trình trên GitHub Codespaces, sử dụng Node.js
-            và npm để khởi tạo dự án, cài đặt Express và xây dựng
-            API Hello Cloud.
+            lập trình trên GitHub Codespaces, sử dụng Node.js và npm
+            để khởi tạo dự án, cài đặt Express và xây dựng API
+            Hello Cloud.
         </p>
 
         <p>
@@ -770,10 +721,10 @@
         </p>
 
         <p>
-            Bài thực hành giúp em hiểu rõ hơn năm đặc tính
-            điện toán đám mây theo NIST và nhận thức được tầm quan
-            trọng của việc quản lý tài nguyên, bảo mật cổng truy cập
-            cũng như bảo vệ dữ liệu khi sử dụng dịch vụ đám mây.
+            Bài thực hành giúp em hiểu rõ hơn năm đặc tính điện toán
+            đám mây theo NIST và nhận thức được tầm quan trọng của
+            việc quản lý tài nguyên, bảo mật cổng truy cập và bảo vệ
+            dữ liệu khi sử dụng dịch vụ đám mây.
         </p>
     </section>
 
