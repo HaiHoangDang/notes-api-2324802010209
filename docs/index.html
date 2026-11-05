@@ -1,0 +1,195 @@
+<!-- Tiêu chí	Máy cá nhân – Dell Latitude 7300	Codespace
+Thời gian chạy node -v	v26.13.0	Chưa đo
+Số CPU, RAM	8 CPU logic, 4 nhân, RAM 8 GB	Lấy từ API
+Hệ điều hành	Windows 10 Pro, Build 19045	Lấy từ platform
+Truy cập từ thiết bị khác	Localhost; cần cấu hình mạng để thiết bị khác truy cập	URL GitHub Codespaces, cổng Public
+Chi phí	Phần cứng, điện năng, bảo trì	Core-hours và GB-hours -->
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 1 - Hello Cloud API</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #17365d;
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 1050px;
+            margin: 30px auto;
+            padding: 0 18px;
+        }
+
+        section {
+            background: white;
+            padding: 24px;
+            margin-bottom: 22px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        h2 {
+            color: #17365d;
+            border-bottom: 2px solid #dbeafe;
+            padding-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: #dbeafe;
+            color: #17365d;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .note {
+            background: #eff6ff;
+            padding: 15px;
+            border-left: 4px solid #2563eb;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #64748b;
+        }
+
+        @media (max-width: 650px) {
+            section {
+                padding: 14px;
+                overflow-x: auto;
+            }
+
+            table {
+                min-width: 600px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>BÀI 1 - LẬP TRÌNH TRÊN MÁY ẢO ĐÁM MÂY ĐẦU TIÊN</h1>
+    <p>HELLO CLOUD API - NODE.JS - GITHUB CODESPACES</p>
+    <p>Họ và tên: Đặng Hoàng Hải</p>
+    <p>MSSV: 2324802010209</p>
+    <p>Môn học: Điện toán đám mây</p>
+</header>
+<main>
+
+ 
+<section>
+    <h2>2. Bảng so sánh máy cá nhân và Codespace</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Tiêu chí</th>
+                <th>Máy cá nhân - Dell Latitude 7300</th>
+                <th>Codespace</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Thời gian từ lúc bắt đầu đến khi chạy được node -v</td>
+                <td>Chưa chạy được tại thời điểm kiểm tra vì Windows chưa nhận diện Node.js.</td>
+                <td>Chưa đo thời gian thực tế.</td>
+            </tr>
+
+            <tr>
+                <td>Phiên bản Node.js</td>
+                <td>Chưa được nhận diện.</td>
+                <td>v26.13.0</td>
+            </tr>
+
+            <tr>
+                <td>Phiên bản npm</td>
+                <td>Chưa kiểm tra.</td>
+                <td>Chưa xác minh.</td>
+            </tr>
+
+            <tr>
+                <td>Số CPU, RAM</td>
+                <td>
+                    Intel Core i7-8665U, 4 nhân,
+                    8 CPU logic, RAM 7.82 GB.
+                </td>
+                <td>
+                    Điền số CPU và RAM thực tế từ API Hello Cloud.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Hệ điều hành</td>
+                <td>Windows 10 Pro, Build 19045, 64-bit.</td>
+                <td>Điền thông tin từ trường platform trong API.</td>
+            </tr>
+
+            <tr>
+                <td>Cách truy cập từ thiết bị khác</td>
+                <td>
+                    Thông thường sử dụng localhost.
+                    Muốn thiết bị khác truy cập cần cấu hình mạng
+                    và chia sẻ dịch vụ.
+                </td>
+                <td>
+                    Truy cập bằng URL GitHub Codespaces khi
+                    cổng 3000 được đặt ở chế độ Public.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Chi phí, đo bằng gì</td>
+                <td>
+                    Chi phí mua phần cứng, điện năng và bảo trì
+                    máy tính cá nhân.
+                </td>
+                <td>
+                    Theo dõi bằng core-hours và dung lượng lưu trữ
+                    GB-hours tại GitHub Billing Usage.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+</main>
+
+<footer>
+    Bài thực hành 1 - Hello Cloud API
+</footer>
+
+</body>
+</html>

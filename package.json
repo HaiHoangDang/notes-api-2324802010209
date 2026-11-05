@@ -1,0 +1,25 @@
+{
+  "name": "notes-api-2324802010209",
+  "version": "1.0.0",
+  "description": "Template for TDMU Cloud Lab",
+  "main": "index.js",
+"scripts": {
+  "start": "node src/server.js",
+  "test": "node --test"
+},
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HaiHoangDang/notes-api-2324802010209.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HaiHoangDang/notes-api-2324802010209/issues"
+  },
+  "homepage": "https://github.com/HaiHoangDang/notes-api-2324802010209#readme",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
