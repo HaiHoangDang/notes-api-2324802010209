@@ -107,83 +107,164 @@ Chi phí	Phần cứng, điện năng, bảo trì	Core-hours và GB-hours -->
 </header>
 <main>
 
- 
-<section>
-    <h2>2. Bảng so sánh máy cá nhân và Codespace</h2>
+    <section>
+        <h2>1. Mục tiêu thực hành</h2>
+        <p>
+            Thực hành cấp phát một môi trường lập trình trên đám mây
+            bằng GitHub Codespaces, xây dựng API Hello Cloud bằng Node.js
+            và Express, sau đó so sánh với môi trường lập trình trên máy cá nhân.
+        </p>
+    </section>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Tiêu chí</th>
-                <th>Máy cá nhân - Dell Latitude 7300</th>
-                <th>Codespace</th>
-            </tr>
-        </thead>
+    <section>
+        <h2>2. Bảng so sánh máy cá nhân và Codespace</h2>
 
-        <tbody>
-            <tr>
-                <td>Thời gian từ lúc bắt đầu đến khi chạy được node -v</td>
-                <td>Chưa chạy được tại thời điểm kiểm tra vì Windows chưa nhận diện Node.js.</td>
-                <td>Chưa đo thời gian thực tế.</td>
-            </tr>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tiêu chí</th>
+                    <th>Máy cá nhân</th>
+                    <th>Codespace</th>
+                </tr>
+            </thead>
 
-            <tr>
-                <td>Phiên bản Node.js</td>
-                <td>Chưa được nhận diện.</td>
-                <td>v26.13.0</td>
-            </tr>
+            <tbody>
+                <tr>
+                    <td>Thời gian từ lúc bắt đầu đến khi chạy được node -v</td>
+                    <td>[ĐIỀN THỜI GIAN THỰC TẾ]</td>
+                    <td>[ĐIỀN THỜI GIAN THỰC TẾ]</td>
+                </tr>
 
-            <tr>
-                <td>Phiên bản npm</td>
-                <td>Chưa kiểm tra.</td>
-                <td>Chưa xác minh.</td>
-            </tr>
+                <tr>
+                    <td>Số CPU, RAM</td>
+                    <td>[ĐIỀN CPU VÀ RAM MÁY CÁ NHÂN]</td>
+                    <td>[ĐIỀN CPU VÀ RAM TỪ API]</td>
+                </tr>
 
-            <tr>
-                <td>Số CPU, RAM</td>
-                <td>
-                    Intel Core i7-8665U, 4 nhân,
-                    8 CPU logic, RAM 7.82 GB.
-                </td>
-                <td>
-                    Điền số CPU và RAM thực tế từ API Hello Cloud.
-                </td>
-            </tr>
+                <tr>
+                    <td>Hệ điều hành</td>
+                    <td>[ĐIỀN PHIÊN BẢN WINDOWS/MACOS/LINUX]</td>
+                    <td>[ĐIỀN PLATFORM TỪ API]</td>
+                </tr>
 
-            <tr>
-                <td>Hệ điều hành</td>
-                <td>Windows 10 Pro, Build 19045, 64-bit.</td>
-                <td>Điền thông tin từ trường platform trong API.</td>
-            </tr>
+                <tr>
+                    <td>Cách truy cập từ thiết bị khác</td>
+                    <td>Thông thường truy cập bằng localhost. Muốn thiết bị khác truy cập cần cấu hình mạng và chia sẻ dịch vụ.</td>
+                    <td>Truy cập bằng URL chuyển tiếp của GitHub Codespaces khi cổng được đặt ở chế độ Public.</td>
+                </tr>
 
-            <tr>
-                <td>Cách truy cập từ thiết bị khác</td>
-                <td>
-                    Thông thường sử dụng localhost.
-                    Muốn thiết bị khác truy cập cần cấu hình mạng
-                    và chia sẻ dịch vụ.
-                </td>
-                <td>
-                    Truy cập bằng URL GitHub Codespaces khi
-                    cổng 3000 được đặt ở chế độ Public.
-                </td>
-            </tr>
+                <tr>
+                    <td>Chi phí, đo bằng gì</td>
+                    <td>Chi phí mua phần cứng, điện năng và bảo trì máy tính.</td>
+                    <td>Đo bằng core-hours và dung lượng lưu trữ GB-hours thông qua Billing Usage của GitHub.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 
-            <tr>
-                <td>Chi phí, đo bằng gì</td>
-                <td>
-                    Chi phí mua phần cứng, điện năng và bảo trì
-                    máy tính cá nhân.
-                </td>
-                <td>
-                    Theo dõi bằng core-hours và dung lượng lưu trữ
-                    GB-hours tại GitHub Billing Usage.
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
+    <section>
+        <h2>3. Năm đặc tính điện toán đám mây theo NIST</h2>
 
+        <table>
+            <thead>
+                <tr>
+                    <th>Đặc tính NIST</th>
+                    <th>Thao tác thực hành và minh chứng</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td><strong>1. Tự phục vụ theo yêu cầu (On-demand Self-service)</strong></td>
+                    <td>
+                        Tự chọn Use this template, tạo repository mới và nhấn
+                        Create codespace on main để cấp phát môi trường lập trình
+                        mà không cần nhân viên nhà cung cấp cài đặt thủ công.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><strong>2. Truy cập mạng rộng (Broad Network Access)</strong></td>
+                    <td>
+                        Mở API qua trình duyệt máy tính và điện thoại bằng URL
+                        GitHub Codespaces sau khi chuyển cổng 3000 sang Public.
+                        Sau khi thử nghiệm, chuyển lại Private.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><strong>3. Gộp tài nguyên (Resource Pooling)</strong></td>
+                    <td>
+                        Sử dụng CPU, RAM và môi trường máy ảo do GitHub cung cấp.
+                        Người dùng không cần biết hoặc tự quản lý máy chủ vật lý
+                        cụ thể đang chạy ứng dụng. Trường host cho biết tên máy chủ
+                        của môi trường hiện tại.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><strong>4. Co giãn nhanh (Rapid Elasticity)</strong></td>
+                    <td>
+                        Có thể nhanh chóng tạo, khởi chạy và dừng Codespace khi
+                        nhu cầu sử dụng thay đổi. Bài thực hành minh họa việc cấp
+                        phát và giải phóng môi trường; chưa thực hiện kiểm thử
+                        tự động co giãn tài nguyên theo tải thực tế.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><strong>5. Dịch vụ đo lường được (Measured Service)</strong></td>
+                    <td>
+                        Theo dõi mức sử dụng Codespaces trên Billing & Licensing
+                        → Usage, bao gồm thời gian sử dụng compute (core-hours)
+                        và lưu trữ (GB-hours).
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>4. Kết quả triển khai API Hello Cloud</h2>
+
+        <p>
+            Ứng dụng được viết bằng Node.js và Express, sử dụng hai tệp
+            app.js và server.js để tách biệt phần xử lý ứng dụng với
+            phần khởi chạy máy chủ.
+        </p>
+
+        <p>
+            API GET / trả về thông điệp chào mừng cùng các thông tin
+            về máy chủ như hostname, hệ điều hành, CPU, RAM, thời gian
+            hoạt động và thời điểm phản hồi.
+        </p>
+
+        <div class="note">
+            <strong>API kiểm tra:</strong> GET /<br>
+            <strong>Cổng chạy:</strong> 3000<br>
+            <strong>Kết quả:</strong> Trả về dữ liệu JSON.
+        </div>
+    </section>
+
+    <section>
+        <h2>5. Kết luận</h2>
+
+        <p>
+            Qua bài thực hành, em đã tạo được một môi trường lập trình
+            trên GitHub Codespaces, khởi tạo dự án Node.js, triển khai
+            API Hello Cloud và truy cập API từ thiết bị khác thông qua
+            cổng được chuyển tiếp.
+        </p>
+
+        <p>
+            So với môi trường cài đặt trên máy cá nhân, Codespaces giúp
+            giảm công sức chuẩn bị môi trường, thuận tiện chia sẻ và
+            truy cập từ nhiều thiết bị. Các thao tác tạo, chạy, dừng
+            và theo dõi mức sử dụng giúp nhận diện năm đặc tính của
+            điện toán đám mây theo NIST.
+        </p>
+
+    </section>
 
 </main>
 
