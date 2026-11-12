@@ -727,7 +727,305 @@
             dữ liệu khi sử dụng dịch vụ đám mây.
         </p>
     </section>
+<!-- BAI 2 -->
+<section>
+    <h2>8. Bài 2 - Ảo hóa, Container và mô phỏng trung tâm dữ liệu</h2>
 
+    <h3>8.1. Mục tiêu thực hành</h3>
+    <p>
+        Thực hiện đóng gói ứng dụng Hello Cloud API từ Bài 1
+        thành Docker Image, chạy nhiều Container với giới hạn
+        tài nguyên CPU và RAM, đồng thời phát hành Image lên
+        GitHub Container Registry.
+    </p>
+    <p>
+        Sử dụng CloudSim Plus để mô phỏng việc phân bổ máy ảo
+        lên máy chủ vật lý, thay đổi số lượng VM, Cloudlet
+        và chính sách lập lịch để đánh giá ảnh hưởng đến
+        thời gian hoàn thành tác vụ.
+    </p>
+
+    <h3>8.2. Xây dựng Docker Image</h3>
+    <p>
+        Sử dụng Node.js 22 Alpine làm môi trường nền.
+        Dockerfile sao chép package.json, package-lock.json
+        và mã nguồn trong thư mục src vào Container.
+        Thư viện được cài đặt bằng npm ci --omit=dev.
+        Ứng dụng chạy bằng tài khoản node trên cổng 3000.
+    </p>
+
+    <h4>Nội dung Dockerfile</h4>
+    <pre><code>FROM node:22-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --omit=dev
+COPY src ./src
+ENV PORT=3000
+EXPOSE 3000
+USER node
+CMD ["node", "src/server.js"]</code></pre>
+
+    <h4>Nội dung .dockerignore</h4>
+    <pre><code>node_modules
+.env
+.git
+docs</code></pre>
+
+    <h3>8.3. Kết quả chạy hai Container</h3>
+    <p>
+        Từ Image notes-api:1.0, tạo hai Container notes1
+        và notes2. Container notes1 sử dụng cổng 3000.
+        Container notes2 sử dụng cổng 3001 và được giới hạn
+        0.5 CPU, 128 MiB RAM.
+    </p>
+
+    <table>
+        <tr>
+            <th>Thông số</th>
+            <th>notes1</th>
+            <th>notes2</th>
+        </tr>
+        <tr>
+            <td>Docker Image</td>
+            <td>notes-api:1.0</td>
+            <td>notes-api:1.0</td>
+        </tr>
+        <tr>
+            <td>Cổng truy cập</td>
+            <td>3000</td>
+            <td>3001</td>
+        </tr>
+        <tr>
+            <td>CPU limit</td>
+            <td>Không đặt giới hạn riêng</td>
+            <td>0.5 CPU</td>
+        </tr>
+        <tr>
+            <td>RAM limit</td>
+            <td>Không đặt giới hạn riêng (7.756 GiB theo docker stats)</td>
+            <td>128 MiB</td>
+        </tr>
+        <tr>
+            <td>Trạng thái</td>
+            <td>Up (đang chạy)</td>
+            <td>Up (đang chạy)</td>
+        </tr>
+    </table>
+
+    <h4>Ảnh minh chứng</h4>
+    <p>Hình 8.1. Kết quả docker ps và docker stats</p>
+    <img src="images/docker-stats.png"
+         alt="Kết quả giới hạn tài nguyên Docker"
+         style="max-width:100%;">
+
+    <p>Hình 8.2. Kết quả gọi API từ hai Container</p>
+    <img src="images/docker-api.png"
+         alt="Kết quả gọi API từ hai Container"
+         style="max-width:100%;">
+
+    <h3>8.4. So sánh máy ảo và Container</h3>
+    <table>
+        <tr>
+            <th>Tiêu chí</th>
+            <th>Codespaces (VM)</th>
+            <th>Container notes2</th>
+        </tr>
+        <tr>
+            <td>Thời gian khởi động</td>
+            <td>0m0.72s</td>
+            <td>real 0m0.388s</td>
+        </tr>
+        <tr>
+            <td>Kích thước</td>
+            <td>Hạn mức lưu trữ 15 GB-tháng theo đề</td>
+            <td>DISK USAGE 251MB, CONTENT SIZE 63.3MB</td>
+        </tr>
+        <tr>
+            <td>Nhân hệ điều hành</td>
+            <td>Nhân riêng của VM</td>
+            <td>Dùng chung nhân máy chủ Docker</td>
+        </tr>
+        <tr>
+            <td>Mức cô lập</td>
+            <td>Ảo hóa phần cứng, hệ điều hành khách riêng</td>
+            <td>Cô lập tiến trình bằng namespaces và cgroups</td>
+        </tr>
+    </table>
+
+    <p>
+        Nhận xét: Máy ảo có hệ điều hành khách và nhân riêng,
+        trong khi Container chia sẻ nhân hệ điều hành của máy chủ.
+        Container có mức độ nhẹ hơn do không cần khởi tạo
+        một hệ điều hành khách hoàn chỉnh.
+    </p>
+
+    <h4>Kiểm tra nhân hệ điều hành</h4>
+    <p>Kernel Codespaces: 6.8.0-1070-azure (lệnh uname -r)</p>
+    <p>Kernel Container: 6.8.0-1070-azure (lệnh docker exec notes1 uname -r)</p>
+
+    <h3>8.5. Phát hành Docker Image trên GHCR</h3>
+    <p>
+        Docker Image được gắn thẻ và phát hành lên
+        GitHub Container Registry.
+    </p>
+    <p>
+        Địa chỉ Image:
+        ghcr.io/haihoangdang/notes-api:1.0
+    </p>
+    <p>
+        Package:
+        <a href="https://github.com/users/HaiHoangDang/packages">
+            Xem các Package trên GitHub
+        </a>
+    </p>
+    <p>
+        Trạng thái công khai: Public
+    </p>
+    <p>
+        Đã kiểm tra tải Image từ GHCR và chạy lại API:
+        Đã thực hiện. Sau khi xóa Container, xóa Image cục bộ và
+        docker logout ghcr.io, lệnh docker pull
+        ghcr.io/haihoangdang/notes-api:1.0 tải thành công
+        (Digest sha256:a64e3acc889b36480badcc28b3276307be542cfdede3cf4018a5e330a5e95e78).
+        Container notes-from-ghcr chạy trên cổng 3000 và API
+        trả về kết quả thành công qua URL chuyển tiếp cổng của Codespaces.
+    </p>
+
+    <h3>8.6. Mô phỏng trung tâm dữ liệu với CloudSim Plus</h3>
+    <p>
+        Sử dụng CloudSim Plus để mô phỏng một máy chủ vật lý,
+        các máy ảo và các tác vụ Cloudlet. Thay đổi từng thông số
+        để quan sát sự ảnh hưởng đến khả năng phân bổ tài nguyên
+        và thời điểm hoàn thành tác vụ.
+    </p>
+
+    <table>
+        <tr>
+            <th>Thành phần</th>
+            <th>Cấu hình gốc</th>
+        </tr>
+        <tr><td>HOSTS</td><td>1</td></tr>
+        <tr><td>HOST_PES</td><td>8</td></tr>
+        <tr><td>VMS</td><td>2</td></tr>
+        <tr><td>VM_PES</td><td>4</td></tr>
+        <tr><td>CLOUDLETS</td><td>4</td></tr>
+        <tr><td>CLOUDLET_PES</td><td>2</td></tr>
+    </table>
+
+    <h3>8.7. Bảng kết quả bốn lần mô phỏng</h3>
+    <table>
+        <tr>
+            <th>Lần</th>
+            <th>Thay đổi</th>
+            <th>Finish Time lớn nhất (giây)</th>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>Cấu hình ban đầu</td>
+            <td>20.1</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Nhân đôi VMS</td>
+            <td>20.1</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Nhân đôi CLOUDLETS</td>
+            <td>20.1</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>CloudletSchedulerSpaceShared</td>
+            <td>20.1</td>
+        </tr>
+    </table>
+
+    <h4>Nhận xét kết quả mô phỏng</h4>
+    <p>
+        Lần 0 sử dụng cấu hình ban đầu với một máy chủ vật lý,
+        hai máy ảo và bốn Cloudlet.
+    </p>
+    <p>
+        Lần 1 tăng số lượng VM lên bốn trong khi máy chủ
+        chỉ có tám PE. Tổng số PE VM yêu cầu lớn hơn tài nguyên
+        CPU của máy chủ, do đó có thể xảy ra tình trạng VM
+        không được cấp phát.
+    </p>
+    <p>
+        Lần 2 tăng số lượng Cloudlet lên tám, trong khi số Host
+        và VM được giữ nguyên. Thí nghiệm giúp quan sát tác động
+        của số lượng tác vụ đến thời gian hoàn thành.
+    </p>
+    <p>
+        Lần 3 sử dụng CloudletSchedulerSpaceShared thay cho
+        chính sách TimeShared mặc định. Những Cloudlet chưa
+        được cấp đủ PE phải chờ, do đó thời điểm hoàn thành
+        có thể thay đổi.
+    </p>
+
+    <h3>8.8. Trả lời câu hỏi phản biện</h3>
+
+    <h4>Câu 1. Vì sao API trong Container notes2 vẫn báo memoryGB
+    bằng RAM máy chủ dù đã giới hạn 128 MB?</h4>
+    <p>
+        API sử dụng os.totalmem() để lấy tổng bộ nhớ hệ thống
+        do hệ điều hành báo cáo. Hàm này không trực tiếp đọc
+        giới hạn bộ nhớ cgroups áp dụng cho Container.
+        Docker sử dụng cgroups để giới hạn tiến trình notes2
+        ở mức 128 MiB. Vì vậy, giá trị RAM API hiển thị có thể
+        khác giới hạn RAM thực tế.
+    </p>
+    <p>
+        Đối với Node.js cần kiểm tra cgroups và cấu hình Heap
+        phù hợp. Đối với Java cần dùng JVM hỗ trợ nhận diện
+        tài nguyên Container, đồng thời cấu hình giới hạn Heap
+        để tránh sử dụng vượt quá RAM được cấp.
+    </p>
+
+    <h4>Câu 2. Time-shared và space-shared khác nhau như thế nào?</h4>
+    <p>
+        Time-shared cho phép nhiều Cloudlet cùng thực thi
+        bằng cách chia sẻ năng lực CPU. Space-shared cấp phát
+        PE độc quyền cho Cloudlet; tác vụ chưa đủ tài nguyên
+        phải chờ.
+    </p>
+    <p>
+        Với gói đám mây giá rẻ, Time-shared có thể giúp nhà
+        cung cấp tận dụng tài nguyên tốt hơn và giảm chi phí.
+        Tuy nhiên hiệu năng phụ thuộc mức độ tranh chấp CPU.
+        Gói cần hiệu năng ổn định có thể dùng chính sách
+        cấp phát độc quyền hoặc tài nguyên có cam kết.
+    </p>
+
+    <h4>Câu 3. Mô phỏng có ích gì trước khi thuê hạ tầng thật?</h4>
+    <p>
+        Mô phỏng giúp đánh giá cấu hình máy chủ, khả năng
+        phân bổ VM, số lượng tác vụ và chính sách lập lịch
+        trước khi triển khai thực tế. Tuy nhiên kết quả có thể
+        khác thực tế do mô hình mô phỏng chưa phản ánh đầy đủ
+        độ trễ mạng, I/O, sự cố phần cứng, biến động tải và
+        tình trạng tranh chấp tài nguyên thực tế.
+    </p>
+
+    <h3>8.9. Kết luận</h3>
+    <p>
+        Qua bài thực hành, em đã đóng gói Hello Cloud API
+        thành Docker Image, triển khai nhiều Container
+        và giới hạn CPU, RAM bằng Docker. Image được phát hành
+        lên GitHub Container Registry để kiểm tra khả năng
+        tải và sử dụng lại.
+    </p>
+    <p>
+        Bên cạnh đó, em đã sử dụng CloudSim Plus để mô phỏng
+        trung tâm dữ liệu, quan sát khả năng phân bổ máy ảo
+        và so sánh chính sách lập lịch Cloudlet.
+        Qua đó hiểu rõ hơn sự khác biệt giữa ảo hóa máy ảo
+        và ảo hóa mức hệ điều hành, cũng như vai trò của
+        mô phỏng trong việc đánh giá tài nguyên điện toán đám mây.
+    </p>
+</section>
+</main>
 </main>
 
 <footer>
