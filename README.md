@@ -163,3 +163,24 @@ MongoDB replica set sao chép tập dữ liệu của replica set giữa các me
 - [MongoDB BSON Document Size](https://www.mongodb.com/docs/manual/core/document/)
 - [Supabase Storage](https://supabase.com/docs/guides/storage)
 - [Apache HDFS Design](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)
+
+
+## 7. Kết quả thực nghiệm và tài liệu nộp Bài 3
+
+Số liệu `npm run explain` do người thực hiện cung cấp:
+
+| Phương pháp | docsExamined | returned | ms |
+| --- | ---: | ---: | ---: |
+| Quét toàn bộ | 2.000 | 571 | 1 |
+| Dùng chỉ mục | 571 | 571 | 1 |
+
+Chỉ mục giảm `docsExamined` 3,50 lần, tương đương 71,45%. Hai truy vấn cùng trả về 571 tài liệu; thời gian hiển thị đều là 1 ms.
+
+Kết quả quan sát replica set: `hello` trả về 3 thành viên trong `hosts`, có một thành viên được xác định là Primary.
+
+Tài liệu nộp:
+- [Kết quả thực nghiệm và trả lời phản biện](docs/Bai3/ket-qua-thuc-nghiem.md)
+- [Sơ đồ so sánh Atlas – HDFS](docs/Bai3/so-do-atlas-hdfs.md)
+- [Ảnh trình bày lại kết quả explain.js](docs/Bai3/explain-output.svg)
+
+**Lưu ý về ảnh:** SVG là bản trình bày lại từ log terminal do người thực hiện cung cấp, không phải ảnh chụp trực tiếp Codespaces. Nếu yêu cầu chấm bài cần ảnh chụp gốc, hãy bổ sung ảnh chụp màn hình terminal.
