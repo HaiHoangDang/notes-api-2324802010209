@@ -1,13 +1,14 @@
 {
   "name": "notes-api-2324802010209",
   "version": "1.0.0",
-  "description": "Template for TDMU Cloud Lab",
-  "main": "index.js",
-"scripts": {
-  "start": "node src/server.js",
-  "test": "node --test"
-},
-
+  "description": "Notes API - Bài 3: MongoDB Atlas và Supabase Storage",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test",
+    "seed": "node scripts/seed.js",
+    "explain": "node scripts/explain.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HaiHoangDang/notes-api-2324802010209.git"
@@ -20,6 +21,10 @@
   },
   "homepage": "https://github.com/HaiHoangDang/notes-api-2324802010209#readme",
   "dependencies": {
-    "express": "^5.3.0"
+    "@supabase/supabase-js": "^2.57.4",
+    "dotenv": "^16.6.1",
+    "express": "^5.3.0",
+    "mongoose": "^8.18.0",
+    "multer": "^2.0.2"
   }
 }

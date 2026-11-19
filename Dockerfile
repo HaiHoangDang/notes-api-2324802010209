@@ -1,13 +1,14 @@
-
 FROM node:22-alpine
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm ci --omit=dev
+# npm install đồng bộ package-lock.json khi bổ sung dependency mới của bài 3.
+RUN npm install --omit=dev --no-audit --no-fund
 
 COPY src ./src
+COPY scripts ./scripts
 
 ENV PORT=3000
 
