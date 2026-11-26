@@ -1,21 +1,9 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { rateLimit } = require('express-rate-limit');
 const User = require('../models/user');
 
 const router = express.Router();
-
-// Giới hạn riêng endpoint đăng nhập. Bỏ qua yêu cầu đăng nhập thành công
-// để 20 lần đăng nhập sai được tính đúng trước khi lần sai thứ 21 nhận 429.
-const loginLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  limit: 20,
-  standardHeaders: true,
-  legacyHeaders: false,
-  skipSuccessfulRequests: true,
-  message: { error: 'Quá nhiều lần đăng nhập thất bại. Vui lòng thử lại sau 15 phút.' }
-});
 
 // Chỉ nhận chuỗi để chặn đối tượng/toán tử MongoDB trong email và password.
 function readCredentials(body) {
@@ -74,7 +62,7 @@ router.post('/register', async (req, res) => {
   }
 });
 
-router.post('/login', loginLimiter, async (req, res) => {
+router.post('/login', async (req, res) => {
   const cred = readCredentials(req.body);
   const user = cred
     ? await User.findOne({ email: cred.email }).select('+passwordHash')

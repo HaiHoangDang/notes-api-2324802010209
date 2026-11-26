@@ -1,6 +1,7 @@
 const express = require('express');
 const os = require('os');
 const helmet = require('helmet');
+const { rateLimit } = require('express-rate-limit');
 const mongoose = require('mongoose');
 const notesRouter = require('./routes/notes');
 const authRouter = require('./routes/auth');
@@ -14,7 +15,16 @@ app.set('trust proxy', 1);
 app.use(helmet());
 app.use(express.json({ limit: '100kb' }));
 
-app.use('/auth', authRouter);
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 20,
+  standardHeaders: true,
+  legacyHeaders: false,
+  skipSuccessfulRequests: true,
+  message: { error: 'Quá nhiều yêu cầu xác thực thất bại. Vui lòng thử lại sau 15 phút.' }
+});
+
+app.use('/auth', authLimiter, authRouter);
 
 app.get('/', (req, res) => {
   res.json({

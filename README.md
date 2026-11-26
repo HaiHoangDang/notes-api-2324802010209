@@ -163,3 +163,37 @@ MongoDB replica set sao chép tập dữ liệu của replica set giữa các me
 - [MongoDB BSON Document Size](https://www.mongodb.com/docs/manual/core/document/)
 - [Supabase Storage](https://supabase.com/docs/guides/storage)
 - [Apache HDFS Design](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)
+
+
+## Bài 4 – Bảo mật ứng dụng đám mây
+
+Bài 4 bổ sung ba lớp bảo vệ: quản lý bí mật ngoài mã nguồn, xác thực JWT và phân quyền theo chủ sở hữu, kiểm tra dependency/image.
+
+### Cài đặt và cấu hình
+
+```bash
+git pull --ff-only origin main
+npm install
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
+
+Thêm `MONGODB_URI`, `SUPABASE_URL`, `SUPABASE_SERVICE_KEY` và `JWT_SECRET` vào GitHub → Settings → Codespaces → Secrets, cấp quyền cho repository và Rebuild Codespace. Sau đó xóa `.env` cục bộ; không commit secrets.
+
+### Endpoint xác thực
+
+| Phương thức | Đường dẫn | Hành vi |
+|---|---|---|
+| POST | `/auth/register` | Tạo tài khoản, băm mật khẩu bcrypt, HTTP 201 |
+| POST | `/auth/login` | So khớp hash và cấp JWT 1 giờ |
+| GET | `/notes` | JWT bắt buộc, chỉ đọc ghi chú của chủ sở hữu |
+| POST | `/notes` | JWT bắt buộc, `owner` lấy từ JWT |
+| GET/PUT/DELETE | `/notes/:id` | JWT bắt buộc và lọc theo `owner` |
+| POST | `/notes/:id/attachment` | JWT bắt buộc, kiểm tra chủ sở hữu trước khi upload |
+
+Các lỗi xác thực trả 401; ghi chú không thuộc người dùng trả 404 để tránh tiết lộ sự tồn tại. Helmet bổ sung HTTP security headers; express-rate-limit giới hạn các yêu cầu xác thực thất bại ở 20 lần/15 phút; Mongoose `sanitizeFilter` là lớp phòng thủ bổ sung cho filter.
+
+### Hướng dẫn chứng minh
+
+Xem [Hướng dẫn kiểm thử bảo mật](docs/Bai4/kiem-thu-bao-mat.md), [Sơ đồ xác thực](docs/Bai4/luong-xac-thuc.md) và [Phân tích rủi ro](docs/Bai4/phan-tich-rui-ro.md).
+
+Các số liệu npm audit, Trivy và kích thước image phải được lấy từ lần chạy thực tế trên Codespaces; README không điền số minh họa.
