@@ -2,19 +2,25 @@ const express = require('express');
 const multer = require('multer');
 const Note = require('../models/note');
 const { bucket } = require('../storage');
+const requireAuth = require('../middleware/auth');
 
 const router = express.Router();
+
+// Mọi endpoint /notes đều yêu cầu JWT hợp lệ.
+router.use(requireAuth);
 
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: 2 * 1024 * 1024 } // tối đa 2 MB
 });
 
-// GET /notes hoặc GET /notes?tag=nosql
+// GET /notes hoặc GET /notes?tag=nosql — chỉ lấy ghi chú của người đăng nhập.
 router.get('/', async (req, res) => {
-  const filter = req.query.tag
-    ? { tags: String(req.query.tag) }
-    : {};
+  const filter = { owner: req.user.sub };
+
+  if (req.query.tag) {
+    filter.tags = String(req.query.tag);
+  }
 
   const notes = await Note.find(filter)
     .sort({ createdAt: -1 })
@@ -23,9 +29,12 @@ router.get('/', async (req, res) => {
   res.json(notes);
 });
 
-// GET /notes/:id
+// GET /notes/:id — ghi chú của người khác được trả về 404.
 router.get('/:id', async (req, res) => {
-  const note = await Note.findById(req.params.id);
+  const note = await Note.findOne({
+    _id: req.params.id,
+    owner: req.user.sub
+  });
 
   if (!note) {
     return res.status(404).json({ error: 'Không tìm thấy ghi chú' });
@@ -34,20 +43,26 @@ router.get('/:id', async (req, res) => {
   res.json(note);
 });
 
-// POST /notes
+// POST /notes — owner được lấy từ token, không nhận từ request body.
 router.post('/', async (req, res) => {
   const { title, content, tags } = req.body ?? {};
-  const note = await Note.create({ title, content, tags });
+
+  const note = await Note.create({
+    title,
+    content,
+    tags,
+    owner: req.user.sub
+  });
 
   res.status(201).json(note);
 });
 
-// PUT /notes/:id
+// PUT /notes/:id — chỉ chủ sở hữu mới cập nhật được.
 router.put('/:id', async (req, res) => {
   const { title, content, tags } = req.body ?? {};
 
-  const note = await Note.findByIdAndUpdate(
-    req.params.id,
+  const note = await Note.findOneAndUpdate(
+    { _id: req.params.id, owner: req.user.sub },
     { title, content, tags },
     { new: true, runValidators: true }
   );
@@ -59,9 +74,12 @@ router.put('/:id', async (req, res) => {
   res.json(note);
 });
 
-// DELETE /notes/:id
+// DELETE /notes/:id — chỉ chủ sở hữu mới xóa được.
 router.delete('/:id', async (req, res) => {
-  const note = await Note.findByIdAndDelete(req.params.id);
+  const note = await Note.findOneAndDelete({
+    _id: req.params.id,
+    owner: req.user.sub
+  });
 
   if (!note) {
     return res.status(404).json({ error: 'Không tìm thấy ghi chú' });
@@ -70,13 +88,16 @@ router.delete('/:id', async (req, res) => {
   res.status(204).end();
 });
 
-// POST /notes/:id/attachment với multipart/form-data, trường file
+// POST /notes/:id/attachment — chỉ chủ sở hữu mới tải tệp vào ghi chú được.
 router.post('/:id/attachment', upload.single('file'), async (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: 'Thiếu tệp ở trường "file"' });
   }
 
-  const note = await Note.findById(req.params.id);
+  const note = await Note.findOne({
+    _id: req.params.id,
+    owner: req.user.sub
+  });
 
   if (!note) {
     return res.status(404).json({ error: 'Không tìm thấy ghi chú' });

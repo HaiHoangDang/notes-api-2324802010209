@@ -1,7 +1,7 @@
 {
   "name": "notes-api-2324802010209",
   "version": "1.0.0",
-  "description": "Notes API - Bài 3: MongoDB Atlas và Supabase Storage",
+  "description": "Notes API - Bài 3 và Bài 4: NoSQL, object storage và bảo mật",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
@@ -22,8 +22,12 @@
   "homepage": "https://github.com/HaiHoangDang/notes-api-2324802010209#readme",
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
+    "bcryptjs": "^3.0.3",
     "dotenv": "^16.6.1",
     "express": "^5.3.0",
+    "express-rate-limit": "^8.7.5",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
     "mongoose": "^8.18.0",
     "multer": "^2.0.2"
   }
