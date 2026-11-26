@@ -61,6 +61,8 @@ GET / vẫn công khai và phải trả HTTP 200. Quan sát các response header
 
 ## 4. Đăng ký hai người dùng và kiểm thử quyền sở hữu
 
+**Lưu ý về dữ liệu từ Bài 3:** các ghi chú được tạo trước khi có JWT thường chưa có trường `owner`, vì vậy sau khi bật xác thực chúng không thuộc tài khoản A hoặc B và sẽ không xuất hiện trong danh sách của hai tài khoản. Hãy tạo ghi chú kiểm thử mới sau khi đăng nhập như hướng dẫn dưới đây; không dùng ID ghi chú cũ để chứng minh quyền sở hữu.
+
 Thực hiện các lệnh dưới đây trong cùng một terminal shell thứ hai để giữ các biến `TOKEN_A`, `TOKEN_B`, `NOTE_A_ID`. Mỗi email cần là duy nhất trong database. Dùng hậu tố thời gian để tránh trùng:
 
 ```bash
@@ -222,7 +224,11 @@ Repository đã có `.github/dependabot.yml` để Dependabot kiểm tra cập n
 
 Với repository public, GitHub hiện cung cấp các tính năng security phù hợp theo trang tài liệu GitHub. Ghi lại trạng thái bật và chụp ảnh trang Settings/Security để làm minh chứng.
 
-## 9. Minh chứng cần lưu
+## 9. Giới hạn cần nêu khi đánh giá bảo mật
+
+Bucket `attachments` của Bài 3 được tạo ở chế độ Public theo yêu cầu ban đầu. Bài 4 đã bảo vệ endpoint upload và chỉ cho phép chủ sở hữu của ghi chú gọi endpoint đó, nhưng URL public của object vẫn có thể được mở bởi bất kỳ ai biết URL. Do đó không được kết luận rằng nội dung object đã được bảo vệ theo owner ở tầng Storage. Nếu cần bảo mật file theo từng người dùng trong môi trường thật, chuyển bucket sang Private và triển khai endpoint cấp signed URL có thời hạn sau khi kiểm tra quyền sở hữu.
+
+## 10. Minh chứng cần lưu
 
 - Ảnh Codespaces Secrets có tên biến nhưng che toàn bộ giá trị
 - Ảnh `git check-ignore`, `git ls-files .env` và `git status --short`
